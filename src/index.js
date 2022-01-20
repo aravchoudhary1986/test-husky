@@ -1,3 +1,3 @@
-import Button from "./component/button/button";
+import Button from './component/button/button'
 
-export default Button;
+export default Button
