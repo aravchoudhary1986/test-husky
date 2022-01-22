@@ -4,7 +4,7 @@
   "description": "My button monorepo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
@@ -19,24 +19,29 @@
   "license": "ISC",
   "dependencies": {
     "@babel/preset-react": "^7.16.7",
+    "babel-jest": "^27.4.6",
     "react": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
-    "@webpack-cli/generators": "^2.4.1",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@webpack-cli/generators": "^1.1.0",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^25.7.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.28.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.0",
-    "lerna": "^4.0.0",
+    "jest": "^27.4.7",
+    "lerna": "^3.14.2",
     "lint-staged": "^12.2.2",
     "mini-css-extract-plugin": "^2.5.2",
     "postcss": "^8.4.5",
@@ -52,7 +57,10 @@
     "webpack-dev-server": "^4.7.3"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
+    "*.js": [
+      "npm run test",
+      "eslint --fix"
+    ],
     "*.{js,css,md}": "prettier --write"
   }
 }
